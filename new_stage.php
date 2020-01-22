@@ -10,7 +10,7 @@
 
     <p>  
         <label for="ref_etudiant">Nom étudiant</label> : 
-        <select name="etu" id="etu_select"> 
+        <select name="ref_etudiant"> 
 
         <?php
         try
@@ -25,9 +25,7 @@
         $reponse = $bdd->query('SELECT * FROM Etudiant');
         while ($donnees = $reponse->fetch())
         {
-        ?>
-            <option value='$donnees["id_etudiant"]' ><?php echo $donnees['nom_etudiant'] . " " . $donnees['prenom_etudiant']; ?></option>
-        <?php 
+            echo '<option value="' .$donnees['id_etudiant']. '">' .$donnees['nom_etudiant']. " " .$donnees['prenom_etudiant'].'</option>';
         }
         ?>
         </select>
@@ -37,44 +35,41 @@
         ?> 
         <br />
         <label for="ref_tutent">ID du Tuteur</label> : 
-        <select name="tut" id="tut_select"> 
+        <select name="ref_tutent" > 
 
-<?php
+        <?php
 
-$reponse = $bdd->query('SELECT * FROM Tutent');
-while ($donnees = $reponse->fetch())
-{
-?>
-    <option value=""><?php echo $donnees['nom_tutent'] . " " . $donnees['prenom_tutent']; ?></option>
-<?php 
-}
-?>
-</select>
+        $reponse = $bdd->query('SELECT * FROM Tutent');
+        while ($donnees = $reponse->fetch())
+        {
+            echo '<option value="' .$donnees['id_tutent']. '">' .$donnees['nom_tutent']. " " .$donnees['prenom_tutent'].'</option>'; 
+        }
+        ?>
+        </select>
 
-<?php
-$reponse->closeCursor();
-?> 
-<br />
+        <?php
+        $reponse->closeCursor();
+        ?> 
+        <br />
         <label for="ref_entreprise">ID de L'enteprise</label> : 
-        <select name="ent" id="ent_select"> 
+        <select name="ref_entreprise" > 
 
-<?php
+        <?php
 
-$reponse = $bdd->query('SELECT * FROM Entreprise');
-while ($donnees = $reponse->fetch())
-{
-?>
-    <option value=""><?php echo $donnees['nom_entreprise'] . " " . $donnees['prenom_entreprise']; ?></option>
-<?php 
-}
-?>
-</select>
+        $reponse = $bdd->query('SELECT * FROM Entreprise');
+        while ($donnees = $reponse->fetch())
+        {
+        
+            echo '<option value="' .$donnees['id_entreprise']. '">' .$donnees['nom_entreprise']. " " .$donnees['prenom_entreprise'].'</option>';
+         
+        }
+        ?>
+        </select>
 
-<?php
-$reponse->closeCursor();
-?> 
-
-<br />
+        <?php
+        $reponse->closeCursor();
+        ?> 
+        <br />
         <label for="date_deb">Date de début de stage</label> : <input type="date" name="date_deb" id="date_deb" require><br />
         <label for="date_finn">Date de fin de stage</label> : <input type="date" name="date_finn" id="date_finn"><br />    
         <label for="description">Courte déscription</label> : <input type="text" name="description" id="description" require><br />
