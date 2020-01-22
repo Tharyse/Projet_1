@@ -7,10 +7,74 @@
 <body>
 
 <form action="new_stage.php" method="post">
+
     <p>  
-        <label for="ref_etudiant">ID de L'étudiant</label> : <input type="number" name="ref_etudiant" id="ref_etudiant" require><br />
-        <label for="ref_tutent">ID du Tuteur</label> : <input type="number" name="ref_tutent" id="ref_tutent" require><br />
-        <label for="ref_entreprise">ID de L'enteprise</label> : <input type="number" name="ref_entreprise" id="ref_entreprise" require><br />
+        <label for="ref_etudiant">Nom étudiant</label> : 
+        <select name="etu" id="etu_select"> 
+
+        <?php
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
+        }
+        catch(Exception $e)
+        {
+                die('Erreur : '.$e->getMessage());
+        }
+
+        $reponse = $bdd->query('SELECT * FROM Etudiant');
+        while ($donnees = $reponse->fetch())
+        {
+        ?>
+            <option value='$donnees["id_etudiant"]' ><?php echo $donnees['nom_etudiant'] . " " . $donnees['prenom_etudiant']; ?></option>
+        <?php 
+        }
+        ?>
+        </select>
+
+        <?php
+        $reponse->closeCursor();
+        ?> 
+        <br />
+        <label for="ref_tutent">ID du Tuteur</label> : 
+        <select name="tut" id="tut_select"> 
+
+<?php
+
+$reponse = $bdd->query('SELECT * FROM Tutent');
+while ($donnees = $reponse->fetch())
+{
+?>
+    <option value=""><?php echo $donnees['nom_tutent'] . " " . $donnees['prenom_tutent']; ?></option>
+<?php 
+}
+?>
+</select>
+
+<?php
+$reponse->closeCursor();
+?> 
+<br />
+        <label for="ref_entreprise">ID de L'enteprise</label> : 
+        <select name="ent" id="ent_select"> 
+
+<?php
+
+$reponse = $bdd->query('SELECT * FROM Entreprise');
+while ($donnees = $reponse->fetch())
+{
+?>
+    <option value=""><?php echo $donnees['nom_entreprise'] . " " . $donnees['prenom_entreprise']; ?></option>
+<?php 
+}
+?>
+</select>
+
+<?php
+$reponse->closeCursor();
+?> 
+
+<br />
         <label for="date_deb">Date de début de stage</label> : <input type="date" name="date_deb" id="date_deb" require><br />
         <label for="date_finn">Date de fin de stage</label> : <input type="date" name="date_finn" id="date_finn"><br />    
         <label for="description">Courte déscription</label> : <input type="text" name="description" id="description" require><br />
