@@ -21,7 +21,7 @@
     <p>
     <a href="view_etudiant.php">Voir les Etudiants</a> 
     <a href="view_tuteur.php">Voir les Tuteurs</a> 
-    <a href="view_entreprise.php">Voir les Enterprises</a> 
+    <a href="view_entreprise.php">Voir les Entreprises</a> 
     <a href="view_stage.php">Voir les Stages</a>
     </p> 
     <p>
