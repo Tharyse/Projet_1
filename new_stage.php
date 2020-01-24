@@ -12,7 +12,7 @@
 <form action="new_stage.php" method="post">
 
     <p>  
-        <label for="ref_etudiant">Nom étudiant</label> : 
+        <label for="ref_etudiant">Etudiant</label> : 
         <select name="ref_etudiant"> 
 
         <?php
@@ -26,6 +26,7 @@
         }
 
         $reponse = $bdd->query('SELECT * FROM Etudiant');
+        echo '<option value="">--Choisir une étudiant--</option>';
         while ($donnees = $reponse->fetch())
         {
             echo '<option value="' .$donnees['id_etudiant']. '">' .$donnees['nom_etudiant']. " " .$donnees['prenom_etudiant'].'</option>';
@@ -37,12 +38,13 @@
         $reponse->closeCursor();
         ?> 
         <br />
-        <label for="ref_tutent">ID du Tuteur</label> : 
+        <label for="ref_tutent">Tuteur</label> : 
         <select name="ref_tutent" > 
 
         <?php
 
         $reponse = $bdd->query('SELECT * FROM Tutent');
+        echo '<option value="">--Choisir un tuteur--</option>';
         while ($donnees = $reponse->fetch())
         {
             echo '<option value="' .$donnees['id_tutent']. '">' .$donnees['nom_tutent']. " " .$donnees['prenom_tutent'].'</option>'; 
@@ -54,15 +56,15 @@
         $reponse->closeCursor();
         ?> 
         <br />
-        <label for="ref_entreprise">ID de L'enteprise</label> : 
+        <label for="ref_entreprise">Enteprise</label> : 
         <select name="ref_entreprise" > 
 
         <?php
 
         $reponse = $bdd->query('SELECT * FROM Entreprise');
+        echo '<option value="">--Choisir une entreprise--</option>';
         while ($donnees = $reponse->fetch())
         {
-        
             echo '<option value="' .$donnees['id_entreprise']. '">' .$donnees['nom_entreprise']. " " .$donnees['prenom_entreprise'].'</option>';
          
         }
@@ -73,14 +75,17 @@
         $reponse->closeCursor();
         ?> 
         <br />
-        <label for="date_deb">Date de début de stage</label> : <input type="date" name="date_deb" id="date_deb" require><br />
-        <label for="date_finn">Date de fin de stage</label> : <input type="date" name="date_finn" id="date_finn"><br />    
-        <label for="description">Courte déscription</label> : <input type="text" name="description" id="description" require><br />
+        <label for="date_deb">Date de début</label> : <input type="date" name="date_deb" id="date_deb" required><br />
+        <label for="date_finn">Date de fin</label> : <input type="date" name="date_finn" id="date_finn"><br />    
+        <label for="description">Déscription</label> : <input type="text" name="description" id="description" required><br />
     </p>
     <p>
-        <input type="submit" value="Créer un stage">    
+        <input type="submit" value="Enregistrer un stage">    
     </p>
 </form>
+        <p>
+        <a id="back" href="index.php">Retour</a>  
+    </P>
 </body>
 </html>
 

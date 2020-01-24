@@ -9,15 +9,17 @@
 <body>
 <form action="new_etu.php" method="post">   
     <p>    
-        <label for="prenom_etu"></label><input  placeholder="Prénom Etudiant" type="text" name="prenom_etu" id="prenom_etu" require><br />
-        <label for="nom_etu"></label><input  placeholder="Nom Etudiant" type="text" name="nom_etu" id="nom_etu" require><br />
-        <label for="mail_etu"></label><input  placeholder="Email Etudiant" type="text" name="mail_etu" id="mail_etu" require><br />
+        <label for="prenom_etu"></label><input  placeholder="Prénom Etudiant" type="text" name="prenom_etu" id="prenom_etu" required><br />
+        <label for="nom_etu"></label><input  placeholder="Nom Etudiant" type="text" name="nom_etu" id="nom_etu" required><br />
+        <label for="mail_etu"></label><input  placeholder="Email Etudiant" type="mail" name="mail_etu" id="mail_etu" required><br />
         <label for="id_etu"></label><input placeholder="ID Etudiant" type="number" name="id_etu" id="id_etu" required><br />  
         
         <input type="submit" value="Enregister">   
     </p>
 </form>
-
+<p>
+    <a id="back" href="index.php">Retour</a>  
+</P>
 <?php
 
 try

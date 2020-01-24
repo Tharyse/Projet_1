@@ -26,7 +26,9 @@ catch(Exception $e)
         <th>Déscription</th>
     </tr>
 <?php
-$reponse = $bdd->query('SELECT * FROM Stage ORDER BY ref_etudiant');
+$reponse = $bdd->query('
+SELECT * FROM Stage
+');
 while ($donnees = $reponse->fetch())
 {
 ?>
@@ -42,7 +44,9 @@ while ($donnees = $reponse->fetch())
 } 
 ?>
 </table>
-
+<p>
+        <a id="back" href="index.php">Retour</a>  
+    </P>
 <?php
 
 $reponse->closeCursor();

@@ -10,15 +10,17 @@
 
 <form action="new_tut.php" method="post">   
     <p>    
-        <label for="prenom_tut"></label><input  placeholder="Prénom Tuteur" type="text" name="prenom_tut" id="prenom_tut" require><br />
-        <label for="nom_tut"></label><input  placeholder="Nom Tuteur" type="text" name="nom_tut" id="nom_tut" require><br />
-        <label for="mail_tut"></label><input  placeholder="Email Tuteur" type="text" name="mail_tut" id="mail_tut" require><br />
+        <label for="prenom_tut"></label><input  placeholder="Prénom Tuteur" type="text" name="prenom_tut" id="prenom_tut" required><br />
+        <label for="nom_tut"></label><input  placeholder="Nom Tuteur" type="text" name="nom_tut" id="nom_tut" required><br />
+        <label for="mail_tut"></label><input  placeholder="Email Tuteur" type="mail" name="mail_tut" id="mail_tut" required><br />
         <label for="id_tut"></label><input placeholder="ID tuteur" type="number" name="id_tut" id="id_tut" required><br />  
         
         <input type="submit" value="Enregister">   
     </p>
 </form>
-
+<p>
+        <a id="back" href="index.php">Retour</a>  
+    </P>
 <?php
 
 try

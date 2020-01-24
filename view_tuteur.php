@@ -37,7 +37,9 @@ while ($donnees = $reponse->fetch())
 } 
 ?>
 </table>
-
+<p>
+        <a id="back" href="index.php">Retour</a>  
+    </P>
 <?php
 
 $reponse->closeCursor();

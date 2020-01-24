@@ -10,12 +10,17 @@
 
 <form action="new_ent.php" method="post">   
     <p>    
-        <label for="nom_ent"></label><input  placeholder="Nom Entreprise" type="text" name="nom_ent" id="nom_ent" require><br />
+        <label for="nom_ent"></label><input  placeholder="Nom Entreprise" type="text" name="nom_ent" id="nom_ent" required><br />
         <label for="id_ent"></label><input placeholder="ID Entreprise" type="number" name="id_ent" id="id_ent" required><br />  
         
-        <input type="submit" value="Enregister">   
+        <input type="submit" value="Enregister">
     </p>
 </form>
+
+<br />
+        <p>
+        <a id="back" href="index.php">Retour</a>  
+</P>
 
 <?php
 
