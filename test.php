@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
   <title>Suivi de stages</title>
+  <link rel="stylesheet" href="css.css" />
 </head>
 <body>
 

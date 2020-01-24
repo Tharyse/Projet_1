@@ -1,0 +1,80 @@
+body {
+    background-color: rgb(120, 115, 138);
+    text-align: center;
+    letter-spacing: -1.5px;
+    word-spacing: 5px;
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0px 0px black ;
+      
+}
+
+h1 {
+    color: #8a4844;
+    text-decoration: overline; 
+    text-shadow: 1px 2px black;
+}
+form {
+    width: 100%;
+    padding: 50px 50px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    box-shadow: 3px 6px black;
+    border: 3px groove rgb(84, 66, 151);
+    border-radius: 50px;
+    background-color: #8a4844;
+
+}
+input {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    box-shadow: 3px 6px black;
+    border: 3px groove rgb(84, 66, 151);
+    border-radius: 50px;
+    background-color: rgb(255, 252, 238);
+
+}
+
+input[type=submit]{
+    background-color: rgb(224, 216, 216);
+}
+input[type=submit]:hover{
+    background-color: #f34e46;
+}
+
+table {
+    background-color:rgb(156, 129, 247);
+    border : 3px groove rgb(84, 66, 151);
+}
+
+select {
+    width: 35%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    box-shadow: 3px 6px black;
+    border: 3px groove rgb(84, 66, 151);
+    border-radius: 50px;
+    background-color: rgb(255, 252, 238);
+}
+
+
+a:link, a:visited, a:active {
+    text-decoration: dotted;
+    color: rgb(243, 245, 151);
+    background-color: #8a4844;
+    padding: 20px 40px;
+    display: inline-block;
+    box-shadow: 3px 6px black;
+}
+
+a:hover {
+    text-decoration: dotted;
+    color: #8a4844;
+    padding: 20px 60px;
+    background-color: rgb(228, 228, 217);
+    display: inline-block; 
+    text-shadow: 0px 0px black ;
+}

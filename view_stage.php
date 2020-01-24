@@ -1,3 +1,10 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="css.css" />
+</head>
+<body>
+
 <?php
 try
 {
@@ -41,3 +48,6 @@ while ($donnees = $reponse->fetch())
 $reponse->closeCursor();
 
 ?>
+
+</body>
+</html>
