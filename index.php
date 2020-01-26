@@ -7,9 +7,7 @@
 
   <h1>Gestionnaire de stages</h1>
 </head>
-<style>
 
-</style>  
 <body>
 
 <div>

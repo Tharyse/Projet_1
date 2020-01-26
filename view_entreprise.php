@@ -5,42 +5,22 @@
   <title>Suivi de stages</title>
   <link rel="stylesheet" href="css.css" />
 </head>
-
-<table width="100%" border="1" cellspacing="0">
-    <tr>
-        <th>ID Entreprise</th>
-        <th>Nom</th>
-    </tr>
 <?php
-try
-{
-    $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
+try{
+    $bdd = new PDO('mysql:host=localhost;dbname=Test', 't', 't');
+    echo "<table width='100%' border='1' cellspacing='0'>";
+    echo "<tr><td>ID Entreprise</td><td>Nom</td></tr>";
+    foreach($bdd->query("SELECT * FROM Entreprise ORDER BY id_entreprise") as $row){
+        echo "<tr><td>" . $row['id_entreprise'] . "</td>";
+        echo "<td>" . $row['nom_entreprise'] . "</td></tr>";
+    }
+    echo "</tr></table>";
+    echo "<p><a id='back' href='index.php'>Retour</a></P>";
+    $reponse->closeCursor();
+} catch(PDOException $e){
+    print "Error!: " .$e->getMessage() . "<br />";
+    die();
 }
-catch(Exception $e)
-{
-        die('Erreur : '.$e->getMessage());
-}
-
-$reponse = $bdd->query('SELECT * FROM Entreprise ORDER BY id_entreprise');
-while ($donnees = $reponse->fetch())
-{
 ?>
-    <tr>
-        <td><?php echo $donnees['id_entreprise']; ?></td>
-        <td><?php echo $donnees['nom_entreprise']; ?></td>
-    </tr>
-<?php 
-} 
-?>
-</table>
-<p>
-        <a id="back" href="index.php">Retour</a>  
-    </P>
-<?php
-
-$reponse->closeCursor();
-
-?>
-
 </body>
 </html>
