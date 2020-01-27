@@ -8,7 +8,7 @@
 <?php
 try{
     $bdd = new PDO('mysql:host=localhost;dbname=Test', 't', 't');
-    echo "<table width='100%' border='1' cellspacing='0'>";
+    echo "<table class='table table-striped table-dark' width='100%' border='1' cellspacing='0'>";
     echo "<tr><td>ID Entreprise</td><td>Nom</td></tr>";
     foreach($bdd->query("SELECT * FROM Entreprise ORDER BY id_entreprise") as $row){
         echo "<tr><td>" . $row['id_entreprise'] . "</td>";

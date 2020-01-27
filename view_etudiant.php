@@ -10,7 +10,7 @@
 try
 {
     $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
-    echo "<table width='100%' border='1' cellspacing='0'>";
+    echo "<table class='table table-striped table-dark' width='100%' border='1' cellspacing='0'>";
     echo "<tr><th>ID Etudiant</th><th>Nom</th><th>Prénom</th><th>Adresse eMail</th></tr>";
     foreach($bdd->query("SELECT * FROM Etudiant ORDER BY id_etudiant") as $row){
         echo "<tr><td>" . $row['id_etudiant'] . "</td>";
