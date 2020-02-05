@@ -9,101 +9,74 @@
 </head>
 <body>
 
-<form action="new_stage.php" method="post">
+<?php
+try
+{
+    echo'<form action="new_stage.php" method="post"><p>';  
+    $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
+///Paneau déroulant pour les étudiants
+    echo'<label for="ref_etudiant">Etudiant</label> :';
+    echo'<select name="ref_etudiant">';
+    echo '<option value="">--Choisir une étudiant--</option>';
+    foreach ($bdd->query('SELECT * FROM Etudiant') as $row)
+    {
+        echo '<option value="' .$row['id_etudiant']. '">' .$row['nom_etudiant']. " " .$row['prenom_etudiant'].'</option>';
+    }
+    echo '</select> <br />';
+    
+///Paneau déroulant pour les tuteurs
+    echo'<label for="ref_tutent">Tuteur</label> :';
+    echo'<select name="ref_tutent">';
+    echo '<option value="">--Choisir un tuteur--</option>';
+    foreach($bdd->query('SELECT * FROM Tutent') as $row2)
+    {
+        echo '<option value="' .$row2['id_tutent']. '">' .$row2['nom_tutent']. " " .$row2['prenom_tutent'].'</option>'; 
+    }
+    echo '</select> <br />';
 
-    <p>  
-        <label for="ref_etudiant">Etudiant</label> : 
-        <select name="ref_etudiant"> 
-
-        <?php
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
-        }
-        catch(Exception $e)
-        {
-                die('Erreur : '.$e->getMessage());
-        }
-
-        $reponse = $bdd->query('SELECT * FROM Etudiant');
-        echo '<option value="">--Choisir une étudiant--</option>';
-        while ($donnees = $reponse->fetch())
-        {
-            echo '<option value="' .$donnees['id_etudiant']. '">' .$donnees['nom_etudiant']. " " .$donnees['prenom_etudiant'].'</option>';
-        }
-        ?>
-        </select>
-
-        <?php
-        $reponse->closeCursor();
-        ?> 
-        <br />
-        <label for="ref_tutent">Tuteur</label> : 
-        <select name="ref_tutent" > 
-
-        <?php
-
-        $reponse = $bdd->query('SELECT * FROM Tutent');
-        echo '<option value="">--Choisir un tuteur--</option>';
-        while ($donnees = $reponse->fetch())
-        {
-            echo '<option value="' .$donnees['id_tutent']. '">' .$donnees['nom_tutent']. " " .$donnees['prenom_tutent'].'</option>'; 
-        }
-        ?>
-        </select>
-
-        <?php
-        $reponse->closeCursor();
-        ?> 
-        <br />
-        <label for="ref_entreprise">Enteprise</label> : 
-        <select name="ref_entreprise" > 
-
-        <?php
-
-        $reponse = $bdd->query('SELECT * FROM Entreprise');
-        echo '<option value="">--Choisir une entreprise--</option>';
-        while ($donnees = $reponse->fetch())
-        {
-            echo '<option value="' .$donnees['id_entreprise']. '">' .$donnees['nom_entreprise']. " " .$donnees['prenom_entreprise'].'</option>';
-         
-        }
-        ?>
-        </select>
-
-        <?php
-        $reponse->closeCursor();
-        ?> 
-        <br />
-        <label for="date_deb">Date de début</label> : <input type="date" name="date_deb" id="date_deb" required><br />
-        <label for="date_finn">Date de fin</label> : <input type="date" name="date_finn" id="date_finn"><br />    
-        <label for="description">Déscription</label> : <input type="text" name="description" id="description" required><br />
-    </p>
-    <p>
-        <input type="submit" value="Enregistrer un stage">    
-    </p>
-</form>
-        <p>
-        <a id="back" href="index.php">Retour</a>  
-    </P>
+///Paneau déroulant pour les entreprises
+    echo'<label for="ref_entreprise">Enteprise</label> : ';
+    echo'<select name="ref_entreprise" >';
+    echo '<option value="">--Choisir une entreprise--</option>';
+    foreach($bdd->query('SELECT * FROM Entreprise') as $row3)
+    {
+        echo '<option value="' .$row3['id_entreprise']. '">' .$row3['nom_entreprise']. " " .$row3['prenom_entreprise'].'</option>';
+    }
+    echo '</select> <br />';
+///Fin du formulaire
+    echo'<label for="date_deb">Date de début</label> : <input type="date" name="date_deb" id="date_deb" required><br />';
+    echo'<label for="date_finn">Date de fin</label> : <input type="date" name="date_finn" id="date_finn"><br />';
+    echo'<label for="description">Déscription</label> : <input type="text" name="description" id="description" required><br />';
+    
+    echo'</p><p><input type="submit" value="Enregistrer un stage"></p></form>';
+    echo'<p><a id="back" href="index.php">Retour</a></P>';
+}
+catch(PDOException $e){
+    print "Error!: " .$e->getMessage() . "<br />";
+    die();
+}
+?> 
 </body>
 </html>
-
 <?php
 
 try
 {
+    $etu = $_POST['ref_etudiant'];
+    $deb = $_POST['date_deb'];
+    $fin = $_POST['date_finn'];
+    $tut = $_POST['ref_tutent'];
+    $ent = $_POST['ref_entreprise'];
+    $desc = $_POST['description'];
+
     $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
+    $new_stage = 'INSERT INTO Stage (ref_etudiant, date_debut, date_fin, ref_tutent, ref_entreprise, descrition) VALUES(?, ?, ?, ?, ?, ?)';
+    $query = $bdd->prepare($new_stage);
+    $query->execute(array($etu, $deb, $fin, $tut, $ent, $desc));
 }
-catch(Exception $e)
-{
-        die('Erreur : '.$e->getMessage());
+catch(PDOException $e){
+    print "Error!: " .$e->getMessage() . "<br />";
+    die();
 }
 
-$new_stage = 'INSERT INTO Stage (ref_etudiant, date_debut, date_fin, ref_tutent, ref_entreprise, descrition) VALUES(?, ?, ?, ?, ?, ?)';
-$query = $bdd->prepare($new_stage);
-$query->execute(array($_POST['ref_etudiant'], $_POST['date_deb'] , $_POST['date_finn'] ,$_POST['ref_tutent'] ,$_POST['ref_entreprise'] ,$_POST['description']));
 ?>
-
-</body>
-</html>

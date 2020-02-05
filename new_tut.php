@@ -19,23 +19,27 @@
     </p>
 </form>
 <p>
-        <a id="back" href="index.php">Retour</a>  
-    </P>
-<?php
+    <a id="back" href="index.php">Retour</a>  
+</P>
 
+<?php
 try
 {
+    $id = $_POST['id_tut'];
+    $nom = $_POST['nom_tut'];
+    $prenom = $_POST['prenom_tut'];
+    $mail = $_POST['mail_tut'];
+
     $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
+    $new_tutent = 'INSERT INTO Tutent (id_tutent, nom_tutent, prenom_tutent, mail_tutent) VALUES(?, ?, ?, ?)';
+    $query = $bdd->prepare($new_tutent);
+    $query->execute(array($id, $nom, $prenom, $mail));
 }
-catch(Exception $e)
+catch(PDOException $e)
 {
-        die('Erreur : '.$e->getMessage());
+    print "Error!: " .$e->getMessage() . "<br />";
+    die();
 }
-
-$new_tutent = 'INSERT INTO Tutent (id_tutent, nom_tutent, prenom_tutent, mail_tutent) VALUES(?, ?, ?, ?)';
-$query = $bdd->prepare($new_tutent);
-$query->execute(array($_POST['id_tut'], $_POST['nom_tut'],$_POST['prenom_tut'] , $_POST['mail_tut']));
-
 ?>
 
 </body>

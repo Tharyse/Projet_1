@@ -1,10 +1,5 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Suivi de stages</title>
-  <link rel="stylesheet" href="css.css" />
-</head>
+<link rel="stylesheet" href="css.css"/>
+<h1>Entreprise</h1>
 <?php
 try{
     $bdd = new PDO('mysql:host=localhost;dbname=Test', 't', 't');
@@ -22,5 +17,3 @@ try{
     die();
 }
 ?>
-</body>
-</html>

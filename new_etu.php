@@ -24,16 +24,20 @@
 
 try
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
-}
-catch(Exception $e)
-{
-        die('Erreur : '.$e->getMessage());
-}
+    $id = $_POST['id_etu'];
+    $nom = $_POST['nom_etu'];
+    $prenom = $_POST['prenom_etu'];
+    $mail = $_POST['mail_etu'];
 
-$new_etudiant = 'INSERT INTO Etudiant (id_etudiant, nom_etudiant, prenom_etudiant, mail_etudiant) VALUES(?, ?, ?, ?)';
-$query = $bdd->prepare($new_etudiant);
-$query->execute(array($_POST['id_etu'], $_POST['nom_etu'],$_POST['prenom_etu'] , $_POST['mail_etu']));
+    $bdd = new PDO('mysql:host=localhost;dbname=Test;charset=utf8', 't', 't');
+    $new_etudiant = 'INSERT INTO Etudiant (id_etudiant, nom_etudiant, prenom_etudiant, mail_etudiant) VALUES(?, ?, ?, ?)';
+    $query = $bdd->prepare($new_etudiant);
+    $query->execute(array($id, $nom, $prenom, $mail));
+}
+catch(PDOException $e){
+    print "Error!: " .$e->getMessage() . "<br />";
+    die();
+}
 
 ?>
 

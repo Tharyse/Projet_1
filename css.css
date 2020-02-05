@@ -16,6 +16,7 @@ h1 {
 }
 
 form {
+    text-align: left;
     width: 100%;
     padding: 50px 50px;
     margin: 8px 0;
@@ -27,7 +28,7 @@ form {
 
 }
 input {
-    width: 35%;
+    width: 25%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -38,7 +39,7 @@ input {
 
 }
 
-input[type=submit]{
+input[type=submit]{  
     background-color: rgb(224, 216, 216);
 }
 input[type=submit]:hover{
